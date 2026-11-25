@@ -22,4 +22,6 @@ This is our current plan and it might change as we keep building.
 Right now we're each building our parts separately in Unity, and we'll combine them into one project later.
 
 ## Gameplay Video
-Coming soon
+[Watch the gameplay video](https://drive.google.com/file/d/1VN3HP6p7oExNQ-CMDB9pI0a3Qn3MEYfl/view?usp=sharing)
+
+Shows the player walking around the deck, dashing, and using a fishing spot (press E to fish).
