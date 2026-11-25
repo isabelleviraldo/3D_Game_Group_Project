@@ -7,8 +7,17 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 720f;   // how fast the player turns to face a direction
     public float gravity = -20f;     // keeps the player on the floor
 
+    // NEW: dash settings
+    public float dashSpeed = 18f;      // how fast the dash is
+    public float dashDuration = 0.15f; // how long the dash lasts (seconds)
+    public float dashCooldown = 0.5f;  // wait time before you can dash again
+
     private CharacterController controller;
     private float verticalVelocity;
+
+    // NEW: dash timers
+    private float dashTimer;
+    private float cooldownTimer;
 
     void Start()
     {
@@ -39,12 +48,27 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnSpeed * Time.deltaTime);
         }
 
-        // 4. Gravity so the player stays on the ground
+        // NEW: 4. Dash when Space is pressed (if not on cooldown)
+        cooldownTimer -= Time.deltaTime;
+        if (kb != null && kb.spaceKey.wasPressedThisFrame && cooldownTimer <= 0f)
+        {
+            dashTimer = dashDuration;
+            cooldownTimer = dashCooldown;
+        }
+
+        // 5. Gravity so the player stays on the ground
         if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
         verticalVelocity += gravity * Time.deltaTime;
 
-        // 5. Actually move
+        // 6. Normal walking, or a fast burst forward while dashing
         Vector3 velocity = move * moveSpeed;
+        if (dashTimer > 0f)
+        {
+            velocity = transform.forward * dashSpeed;
+            dashTimer -= Time.deltaTime;
+        }
+
+        // 7. Actually move
         velocity.y = verticalVelocity;
         controller.Move(velocity * Time.deltaTime);
     }
