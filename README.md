@@ -16,7 +16,7 @@ This is our current plan and it might change as we keep building.
 ## Who's Working on What
 - **Brandon:** player character and movement around the ship
 - **[Name]:** fishing mini-game
-- **[Name]:** [role]
+- **Kevin:** Camera angle of the game. 
 - **[Name]:** [role]
 
 Right now we're each building our parts separately in Unity, and we'll combine them into one project later.
