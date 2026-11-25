@@ -17,7 +17,7 @@ This is our current plan and it might change as we keep building.
 - **Brandon:** player character and movement around the ship
 - **Jason:** fishing mini-game
 - **Kevin:** ship layout and camera angle
-- **Isabelle:** project coordination, GitHub repo setup, and game menus/UI
+- **Isabelle:** cooking mechanics (preparing and cooking dishes)
 
 Right now we're each building our parts separately in Unity, and we'll combine them into one project later.
 
